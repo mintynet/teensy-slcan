@@ -18,12 +18,12 @@ static uint8_t hexval[17] = "0123456789ABCDEF";
 
 //----------------------------------------------------------------
 
-void send_canmsg(char *buf, boolean rtr) {
+void send_canmsg(char *buf, boolean rtrFlag) {
   if (slcan) {
     CAN_message_t outMsg;
     int msg_id = 0;
     sscanf(&buf[1], "%03x", &msg_id);
-    if (rtr) {
+    if (rtrFlag) {
       outMsg.rtr = 1;
     } else {
       outMsg.ext = 0;
