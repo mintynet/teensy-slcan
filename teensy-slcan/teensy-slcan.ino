@@ -287,7 +287,7 @@ void xfer_can2tty()
         } else {
           command = command + "T";
         }
-        command = command + char(hexval[ (inMsg.id>>28)&15]);
+        command = command + char(hexval[ (inMsg.id>>28)&1]);
         command = command + char(hexval[ (inMsg.id>>24)&15]);
         command = command + char(hexval[ (inMsg.id>>20)&15]);
         command = command + char(hexval[ (inMsg.id>>16)&15]);
