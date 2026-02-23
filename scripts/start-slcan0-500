@@ -1,0 +1,12 @@
+if [ -c /dev/ttyUSB0 ]; then
+	slcand -o -c -f -s6 -S 500000 ttyUSB0
+elif [ -c /dev/ttyACM0 ]; then
+	slcand -o -c -f -s6 -S 500000 ttyACM0
+else 
+	echo "NO ttyUSB0 or ttyACM0 found."
+	exit 1
+fi
+echo "Press any key"
+read name
+ip link set up can0
+ifconfig can0 txqueuelen 1000

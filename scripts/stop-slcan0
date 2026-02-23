@@ -1,0 +1,9 @@
+pkill slcand
+ip link set can0 down
+if [ -c /dev/ttyUSB0 ]; then
+	stty -F /dev/ttyUSB0 speed 500000 cs8 -cstopb -parenb raw
+	echo -ne "C\r" > /dev/ttyUSB0
+elif [ -c /dev/ttyACM0 ]; then
+	stty -F /dev/ttyACM0 speed 500000 cs8 -cstopb -parenb raw
+	echo -ne "C\r" > /dev/ttyACM0
+fi
